@@ -7,11 +7,20 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject{
+    func didLogin()
+}
+
+protocol LogoutDelegate: AnyObject{
+    func didLogout()
+}
+
 class LoginViewController: UIViewController {
     
     let loginView = LoginView()
     let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
+    weak var delegate: LoginViewControllerDelegate?
     
     var username: String?{
         return loginView.usernameTextfield.text
@@ -89,13 +98,14 @@ extension LoginViewController{
             return
         }
         
-        if username.isEmpty || password.isEmpty{
-            configurationView(withMessage: "Username/Password cannot be blank")
-            return
-        }
+//        if username.isEmpty || password.isEmpty{
+//            configurationView(withMessage: "Username/Password cannot be blank")
+//            return
+//        }
         
-        if username == "Sardor" && password == "Karshiev"{
+        if username == "" && password == ""{
             signInButton.configuration?.showsActivityIndicator = true
+            delegate?.didLogin()
         }else{
             configurationView(withMessage: "Incorrect username / password")
         }

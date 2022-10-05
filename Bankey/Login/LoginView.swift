@@ -10,6 +10,7 @@ import UIKit
 class LoginView: UIView{
     
     let stackView = UIStackView()
+    let bankeyLabel = UILabel()
     let usernameTextfield = UITextField()
     let passwordTextfield = UITextField()
     let dividerView = UIView()

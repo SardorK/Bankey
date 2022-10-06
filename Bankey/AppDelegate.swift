@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dummyViewController.logoutDelegate = self
         
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = mainViewController
+        window?.rootViewController = AccountSummaryViewController()
         
         return true
     }

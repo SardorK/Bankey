@@ -9,6 +9,7 @@ import UIKit
 
 class AccountSummaryViewController: UIViewController{
     
+    let names = ["Sardor","Karshiev","Ayubjon O`g`li"]
     var tableView = UITableView()
     
     override func viewDidLoad() {
@@ -20,6 +21,7 @@ class AccountSummaryViewController: UIViewController{
 extension AccountSummaryViewController{
     func setup(){
         setupTableView()
+        setupTableHeaderView()
     }
     
     func setupTableView(){
@@ -36,19 +38,32 @@ extension AccountSummaryViewController{
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
         ])
     }
+    
+    private func setupTableHeaderView(){
+        let header = AccountSummaryHeaderView(frame: .zero)
+        
+        var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        size.width = UIScreen.main.bounds.width
+        
+        tableView.tableHeaderView = header
+    }
 }
 
 extension AccountSummaryViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return names.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+            let cell = UITableViewCell()
+            cell.textLabel?.text = names[indexPath.row]
+            return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
 

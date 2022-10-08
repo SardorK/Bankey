@@ -7,10 +7,9 @@
 
 import UIKit
 
-class AccountSummaryHeaderView: UIView{
+class AccountSummaryHeaderView: UIView {
     
     @IBOutlet var contentView: UIView!
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,13 +25,13 @@ class AccountSummaryHeaderView: UIView{
         return CGSize(width: UIView.noIntrinsicMetric, height: 144)
     }
     
-    private func commonInit(){
+    private func commonInit() {
         let bundle = Bundle(for: AccountSummaryHeaderView.self)
-        bundle.loadNibNamed("AccountSummaryHeaderView", owner: self)
+        bundle.loadNibNamed("AccountSummaryHeaderView", owner: self, options: nil)
         addSubview(contentView)
         contentView.backgroundColor = appColor
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true

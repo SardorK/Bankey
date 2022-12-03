@@ -18,6 +18,11 @@ class AccountSummaryCell: UITableViewCell{
     struct ViewModel{
         let accountType: AccountType
         let accuntName: String
+        let balance: Decimal
+        
+        var balanceAsAttributedString: NSAttributedString {
+                return CurrencyFormatter().makeAttributedCurrency(balance)
+        }
     }
     
     let viewModel: ViewModel? = nil
@@ -129,6 +134,7 @@ extension AccountSummaryCell {
     func configure(with vm: ViewModel){
         typeLabel.text = vm.accountType.rawValue
         nameLabel.text = vm.accuntName
+        balanceAmmountLabel.attributedText = vm.balanceAsAttributedString
         switch vm.accountType{
         case .Banking:
             underlineView.backgroundColor = appColor
